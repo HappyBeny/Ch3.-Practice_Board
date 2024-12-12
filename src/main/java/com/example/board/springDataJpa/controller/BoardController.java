@@ -1,6 +1,7 @@
 package com.example.board.springDataJpa.controller;
 
 import com.example.board.springDataJpa.dto.BoardResponseDto;
+import com.example.board.springDataJpa.dto.BoardWithAgeResponseDto;
 import com.example.board.springDataJpa.dto.CreateBoardRequestDto;
 import com.example.board.springDataJpa.service.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -34,8 +35,21 @@ public class BoardController {
     public ResponseEntity<List<BoardResponseDto>> findAll(){
         List<BoardResponseDto> boardResponseDtoList = boardService.findAll();
 
-
         return new ResponseEntity<>(boardResponseDtoList, HttpStatus.OK);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<BoardWithAgeResponseDto> findById(@PathVariable Long id) {
+        BoardWithAgeResponseDto boardWithAgeResponseDto = boardService.findById(id);
+
+        return new ResponseEntity<>(boardWithAgeResponseDto,HttpStatus.OK);
+    }
+
+    @DeleteMapping("/{id}")
+    public ResponseEntity<Void> delete(@PathVariable Long id) {
+        boardService.delete(id);
+
+        return new ResponseEntity<>(HttpStatus.OK);
     }
 
 }
