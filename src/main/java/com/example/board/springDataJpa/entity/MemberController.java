@@ -1,5 +1,6 @@
 package com.example.board.springDataJpa.entity;
 
+import com.example.board.springDataJpa.dto.MemberResponseDto;
 import com.example.board.springDataJpa.dto.SignUpRequestDto;
 import com.example.board.springDataJpa.dto.SignUpResponseDto;
 import com.example.board.springDataJpa.service.MemberService;
@@ -26,5 +27,12 @@ public class MemberController {
                 );
 
         return new ResponseEntity<>(signUpResponseDto, HttpStatus.CREATED);
+    }
+
+    @GetMapping("/{id}")
+    public ResponseEntity<MemberResponseDto> findById(@PathVariable Long id) {
+        MemberResponseDto memberResponseDto = memberService.findById(id);
+
+        return new ResponseEntity<>(memberResponseDto, HttpStatus.OK);
     }
 }
