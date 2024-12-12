@@ -1,4 +1,4 @@
-package com.example.board.springDataJpa.entity;
+package com.example.board.springDataJpa.controller;
 
 import com.example.board.springDataJpa.dto.MemberResponseDto;
 import com.example.board.springDataJpa.dto.SignUpRequestDto;
